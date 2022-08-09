@@ -1,8 +1,6 @@
-# frozen_string_literal: false
+# frozen-string-literal: false
 
-require 'pry-byebug'
-
-# used to make a game
+# used to make a game object
 class Game
   def initialize
     @turn = [false, false]
