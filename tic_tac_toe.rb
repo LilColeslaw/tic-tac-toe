@@ -1,4 +1,5 @@
 # frozen_string_literal: false
+
 require 'pry-byebug'
 
 # used to make a game
@@ -110,25 +111,19 @@ class Game
            @board.count { |_key, value| value == @player2.symbol } >= 3
       false
     end
-    if @board[1] == @board[2] && @board[2] == @board[3]
-      upcase(1, 2, 3)
-      true
-    elsif @board[4] == @board[5] && @board[5] == @board[6]
-      upcase(4, 5, 6)
-      true
-    elsif @board[7] == @board[8] && @board[8] == @board[9]
-      upcase(7, 8, 9)
-      true
-    elsif @board[1] == @board[4] && @board[4] == @board[7]
-      upcase(1, 4, 7)
-      true
-    elsif @board[2] == @board[5] && @board[5] == @board[8]
-      upcase(2, 5, 8)
-      true
-    elsif @board[3] == @board[6] && @board[6] == @board[9]
-      upcase(3, 6, 9)
-      true
-    elsif @board[1] == @board[5] && @board[5] == @board[9]
+    [1, 4, 7].each do |num|
+      if @board[num] == @board[num + 1] && @board[num + 1] == @board[num + 2]
+        upcase(num, num + 1, num + 2)
+        return true
+      end
+    end
+    [1, 2, 3].each do |num|
+      if @board[num] == @board[num + 3] && @board[num + 3] == @board[num + 6]
+        upcase(num, num + 3, num + 6)
+        return true
+      end
+    end
+    if @board[1] == @board[5] && @board[5] == @board[9]
       upcase(1, 5, 9)
       true
     elsif @board[3] == @board[5] && @board[5] == @board[7]
