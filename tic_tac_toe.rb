@@ -53,7 +53,7 @@ class Game
   end
 
   def play_move(player, square)
-    if square.between?(1, 9)
+    if square.between?(1, 9) && @board[square] == square.to_s # make sure it's in the range and it hasn't been played yet
       @board[square] = player.symbol
     else
       puts 'Not a valid square. Re-enter a move.'
